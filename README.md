@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# Marathon 2026
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal marathon training app to go from 6-7 km runs to a full 42.2 km marathon. Built as a countdown to turning 40.
 
-Currently, two official plugins are available:
+## The Plan
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+26 weeks of structured training across 4 phases:
 
-## React Compiler
+| Phase | Weeks | Weekly Volume | Focus |
+|-------|-------|---------------|-------|
+| Base Building | 1-8 | 20 - 40 km | Build consistent mileage, re-establish 10km comfort |
+| Endurance | 9-16 | 40 - 55 km | Long runs up to 28km, introduce tempo work |
+| Peak | 17-22 | 50 - 65 km | Long runs up to 35km, race-pace sessions |
+| Taper | 23-26 | 65 - 30 km | Reduce volume, sharpen fitness, race day |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Weekly structure: Mon/Fri rest, Tue/Thu easy runs, Wed tempo or intervals, Sat long run, Sun recovery. Every 4th week is a step-back recovery week.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Training calendar** — 26-week view with color-coded workouts, current week highlighting, and a "Go to Today" button
+- **Workout details** — click any day to see the planned workout type, distance, and pace guidance
+- **Run logging** — log actual distance, time, how it felt (1-5), and notes after each run
+- **Dashboard** — weekly mileage chart (planned vs actual), long run progression, pace trends, run streak, and completion percentage
+- **Dark mode** — toggle between light and dark themes
+- **Data backup** — export/import your training logs as JSON
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open the URL shown in the terminal (usually `http://localhost:5173`).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Tech Stack
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [Vite](https://vite.dev) + [React](https://react.dev) + TypeScript
+- [Tailwind CSS](https://tailwindcss.com) v4 for styling
+- [Recharts](https://recharts.org) for charts
+- [date-fns](https://date-fns.org) for date utilities
+- localStorage for data persistence (no backend needed)
+
+## Build
+
+```bash
+npm run build
 ```
+
+Output goes to `dist/` — can be deployed to any static hosting.
+
+## Data
+
+All training data is stored in your browser's localStorage. Use the **Export** button to download a JSON backup, and **Import** to restore it on another device or after clearing browser data.
