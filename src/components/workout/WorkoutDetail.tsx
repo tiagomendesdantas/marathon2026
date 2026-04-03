@@ -51,10 +51,12 @@ export function WorkoutDetail({ workout, log, onSave, onDelete, onClose }: Worko
             </button>
           </div>
 
-          <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-            <p className="text-sm text-gray-700 dark:text-gray-300">{workout.description}</p>
+          <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg space-y-1.5">
+            {workout.description.split('\n').map((line, i) => (
+              <p key={i} className="text-sm text-gray-700 dark:text-gray-300">{line}</p>
+            ))}
             {workout.paceGuidance && (
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{workout.paceGuidance}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 font-medium">{workout.paceGuidance}</p>
             )}
           </div>
 
