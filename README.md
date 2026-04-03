@@ -13,7 +13,7 @@ A personal marathon training app to go from 6-7 km runs to a full 42.2 km marath
 | Peak | 17-22 | 50 - 65 km | Long runs up to 35km, race-pace sessions |
 | Taper | 23-26 | 65 - 30 km | Reduce volume, sharpen fitness, race day |
 
-Weekly structure: Mon/Fri rest, Tue/Thu easy runs, Wed tempo or intervals, Sat long run, Sun recovery. Every 4th week is a step-back recovery week.
+Weekly structure: Mon easy, Tue tempo/intervals, Wed recovery, Thu easy, Fri long run, Sat/Sun rest. Every 4th week is a step-back recovery week.
 
 ## Features
 

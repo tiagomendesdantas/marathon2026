@@ -94,10 +94,9 @@ function buildWorkout(
 function buildWeekWorkouts(weekStart: Date, template: WeekTemplate, isRaceWeek: boolean): Workout[] {
   const workouts: Workout[] = [];
   const days = [
-    { day: 0, type: 'rest' as WorkoutType, distance: null, desc: 'Rest day — recover and recharge', pace: '' },
-    { day: 1, type: 'easy' as WorkoutType, distance: template.easyDistance, desc: 'Easy run — keep it conversational', pace: 'RPE 3-4, easy effort' },
+    { day: 0, type: 'easy' as WorkoutType, distance: template.easyDistance, desc: 'Easy run — keep it conversational', pace: 'RPE 3-4, easy effort' },
     {
-      day: 2,
+      day: 1,
       type: (template.hasIntervals ? 'intervals' : template.tempoDistance > 0 ? 'tempo' : 'easy') as WorkoutType,
       distance: template.hasIntervals ? template.tempoDistance : template.tempoDistance > 0 ? template.tempoDistance : template.easyDistance,
       desc: template.hasIntervals
@@ -107,16 +106,17 @@ function buildWeekWorkouts(weekStart: Date, template: WeekTemplate, isRaceWeek: 
           : 'Easy run — keep it conversational',
       pace: template.hasIntervals ? 'RPE 8, hard effort with recovery' : template.tempoDistance > 0 ? 'RPE 6-7, comfortably hard' : 'RPE 3-4, easy effort',
     },
+    { day: 2, type: 'recovery' as WorkoutType, distance: template.recoveryDistance, desc: 'Recovery run — short and gentle', pace: 'RPE 2-3, very easy' },
     { day: 3, type: 'easy' as WorkoutType, distance: template.easyDistance, desc: 'Easy run — active recovery', pace: 'RPE 3-4, easy effort' },
-    { day: 4, type: 'rest' as WorkoutType, distance: null, desc: 'Rest day — complete rest', pace: '' },
     {
-      day: 5,
+      day: 4,
       type: (isRaceWeek ? 'race' : 'long') as WorkoutType,
       distance: isRaceWeek ? 42.2 : template.longDistance,
       desc: isRaceWeek ? 'RACE DAY — Marathon! You are ready!' : `Long run — ${template.longDistance}km at easy pace`,
       pace: isRaceWeek ? 'Run your race, trust your training!' : 'RPE 3-5, slightly slower than easy',
     },
-    { day: 6, type: 'recovery' as WorkoutType, distance: template.recoveryDistance, desc: 'Recovery run — short and gentle', pace: 'RPE 2-3, very easy' },
+    { day: 5, type: 'rest' as WorkoutType, distance: null, desc: 'Rest day — enjoy the weekend', pace: '' },
+    { day: 6, type: 'rest' as WorkoutType, distance: null, desc: 'Rest day — recover and recharge', pace: '' },
   ];
 
   for (const d of days) {
