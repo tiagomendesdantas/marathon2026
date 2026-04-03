@@ -114,7 +114,7 @@ function buildWeekWorkouts(weekStart: Date, template: WeekTemplate, isRaceWeek: 
   const workouts: Workout[] = [];
   const strength = STRENGTH_BY_PHASE[phase];
   const days = [
-    { day: 0, type: 'easy' as WorkoutType, distance: template.easyDistance, desc: 'Easy run — keep it conversational', pace: 'RPE 3-4, easy effort' },
+    { day: 0, type: 'easy' as WorkoutType, distance: template.easyDistance, desc: 'Easy run — keep it conversational', pace: '6:15 - 6:45 /km — conversational pace' },
     {
       day: 1,
       type: (template.hasIntervals ? 'intervals' : template.tempoDistance > 0 ? 'tempo' : 'easy') as WorkoutType,
@@ -124,16 +124,16 @@ function buildWeekWorkouts(weekStart: Date, template: WeekTemplate, isRaceWeek: 
         : template.tempoDistance > 0
           ? 'Tempo run — sustained comfortably hard effort'
           : 'Easy run — keep it conversational',
-      pace: template.hasIntervals ? 'RPE 8, hard effort with recovery' : template.tempoDistance > 0 ? 'RPE 6-7, comfortably hard' : 'RPE 3-4, easy effort',
+      pace: template.hasIntervals ? '5:00 - 5:15 /km for 800m reps, jog 400m recovery at 7:30+ /km' : template.tempoDistance > 0 ? '5:40 - 5:50 /km — comfortably hard, short sentences only' : '6:15 - 6:45 /km — conversational pace',
     },
     { day: 2, type: 'strength' as WorkoutType, distance: null, desc: strength.desc, pace: strength.pace },
-    { day: 3, type: 'easy' as WorkoutType, distance: template.easyDistance, desc: 'Easy run — active recovery', pace: 'RPE 3-4, easy effort' },
+    { day: 3, type: 'easy' as WorkoutType, distance: template.easyDistance, desc: 'Easy run — active recovery', pace: '6:15 - 6:45 /km — conversational pace' },
     {
       day: 4,
       type: (isRaceWeek ? 'race' : 'long') as WorkoutType,
       distance: isRaceWeek ? 42.2 : template.longDistance,
       desc: isRaceWeek ? 'RACE DAY — Marathon! You are ready!' : `Long run — ${template.longDistance}km at easy pace`,
-      pace: isRaceWeek ? 'Run your race, trust your training!' : 'RPE 3-5, slightly slower than easy',
+      pace: isRaceWeek ? '~6:00 /km target — trust your training!' : '6:30 - 7:00 /km — relaxed, slightly slower than easy',
     },
     { day: 5, type: 'rest' as WorkoutType, distance: null, desc: 'Rest day — enjoy the weekend', pace: '' },
     { day: 6, type: 'rest' as WorkoutType, distance: null, desc: 'Rest day — recover and recharge', pace: '' },
