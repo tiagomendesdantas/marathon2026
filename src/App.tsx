@@ -69,7 +69,7 @@ function App() {
 
   return (
     <Layout darkMode={darkMode} onToggleDark={toggleDark}>
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
         <TabNav activeTab={activeTab} onTabChange={setActiveTab} />
         <div className="flex gap-2">
           <button

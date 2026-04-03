@@ -9,7 +9,7 @@ export function PaceTrendChart({ data }: PaceTrendChartProps) {
     return (
       <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
         <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">Pace Trend (min/km)</h3>
-        <div className="h-[250px] flex items-center justify-center text-gray-400 text-sm">
+        <div className="h-[200px] sm:h-[250px] flex items-center justify-center text-gray-400 text-sm">
           Log some runs to see your pace trend
         </div>
       </div>
@@ -24,7 +24,8 @@ export function PaceTrendChart({ data }: PaceTrendChartProps) {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
       <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">Pace Trend (min/km)</h3>
-      <ResponsiveContainer width="100%" height={250}>
+      <div className="h-[200px] sm:h-[250px]">
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData} margin={{ top: 5, right: 5, left: -10, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
           <XAxis dataKey="name" tick={{ fontSize: 10 }} />
@@ -55,6 +56,7 @@ export function PaceTrendChart({ data }: PaceTrendChartProps) {
           <Line type="monotone" dataKey="pace" stroke="#10b981" strokeWidth={2} dot={{ r: 4 }} />
         </LineChart>
       </ResponsiveContainer>
+      </div>
     </div>
   );
 }

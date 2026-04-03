@@ -45,7 +45,7 @@ export function WeekRow({ week, logs, isCurrentWeek, onDayClick }: WeekRowProps)
           </span>
         )}
       </div>
-      <div className="grid grid-cols-7 gap-1.5">
+      <div className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory md:grid md:grid-cols-7 md:gap-1.5 md:overflow-visible md:pb-0">
         {week.workouts.map((workout) => (
           <DayCell
             key={workout.date}

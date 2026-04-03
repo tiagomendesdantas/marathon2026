@@ -82,7 +82,7 @@ export function RunLogForm({ date, existingLog, onSave, onDelete }: RunLogFormPr
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           How did it feel?
         </label>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {feelingEmojis.map((emoji, i) => (
             <button
               key={i}

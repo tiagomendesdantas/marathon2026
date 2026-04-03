@@ -14,7 +14,8 @@ export function LongRunChart({ data }: LongRunChartProps) {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
       <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">Long Run Progression (km)</h3>
-      <ResponsiveContainer width="100%" height={250}>
+      <div className="h-[200px] sm:h-[250px]">
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData} margin={{ top: 5, right: 5, left: -10, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
           <XAxis dataKey="name" tick={{ fontSize: 10 }} interval={1} />
@@ -48,6 +49,7 @@ export function LongRunChart({ data }: LongRunChartProps) {
           />
         </LineChart>
       </ResponsiveContainer>
+      </div>
     </div>
   );
 }

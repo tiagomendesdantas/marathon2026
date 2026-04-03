@@ -43,7 +43,7 @@ export function DayCell({ workout, log, onClick }: DayCellProps) {
         ${typeColors[workout.type]}
         ${today ? 'ring-2 ring-blue-500 shadow-md' : ''}
         ${missed ? 'opacity-60' : ''}
-        min-h-[70px] w-full`}
+        min-h-[70px] min-w-[120px] md:min-w-0 w-full snap-start`}
     >
       <div className="flex items-center justify-between mb-1">
         <span className="font-medium">{getDayName(workout.dayOfWeek)}</span>
