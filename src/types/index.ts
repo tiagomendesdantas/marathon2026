@@ -1,6 +1,6 @@
 export type Phase = 'base' | 'endurance' | 'peak' | 'taper';
 
-export type WorkoutType = 'rest' | 'easy' | 'long' | 'tempo' | 'intervals' | 'recovery' | 'race';
+export type WorkoutType = 'rest' | 'easy' | 'long' | 'tempo' | 'intervals' | 'recovery' | 'strength' | 'race';
 
 export interface Workout {
   dayOfWeek: number;

@@ -91,8 +91,28 @@ function buildWorkout(
   };
 }
 
-function buildWeekWorkouts(weekStart: Date, template: WeekTemplate, isRaceWeek: boolean): Workout[] {
+const STRENGTH_BY_PHASE: Record<Phase, { desc: string; pace: string }> = {
+  base: {
+    desc: 'Strength — Bodyweight foundations: squats 3x12, lunges 3x10/side, glute bridges 3x15, plank 3x30s, calf raises 3x15',
+    pace: '30-40 min, focus on form',
+  },
+  endurance: {
+    desc: 'Strength — Build load: goblet squats 3x10, single-leg deadlifts 3x8/side, step-ups 3x10/side, side plank 3x30s/side, hip thrusts 3x12',
+    pace: '40-45 min, moderate weight',
+  },
+  peak: {
+    desc: 'Strength — Power & stability: barbell squats 4x6, Romanian deadlifts 3x8, Bulgarian split squats 3x8/side, dead bugs 3x10, box jumps 3x6',
+    pace: '40-45 min, heavier weight, fewer reps',
+  },
+  taper: {
+    desc: 'Strength — Maintenance: bodyweight squats 2x10, lunges 2x8/side, plank 2x30s, glute bridges 2x12, light stretching',
+    pace: '20-25 min, keep it light',
+  },
+};
+
+function buildWeekWorkouts(weekStart: Date, template: WeekTemplate, isRaceWeek: boolean, phase: Phase): Workout[] {
   const workouts: Workout[] = [];
+  const strength = STRENGTH_BY_PHASE[phase];
   const days = [
     { day: 0, type: 'easy' as WorkoutType, distance: template.easyDistance, desc: 'Easy run — keep it conversational', pace: 'RPE 3-4, easy effort' },
     {
@@ -106,7 +126,7 @@ function buildWeekWorkouts(weekStart: Date, template: WeekTemplate, isRaceWeek: 
           : 'Easy run — keep it conversational',
       pace: template.hasIntervals ? 'RPE 8, hard effort with recovery' : template.tempoDistance > 0 ? 'RPE 6-7, comfortably hard' : 'RPE 3-4, easy effort',
     },
-    { day: 2, type: 'recovery' as WorkoutType, distance: template.recoveryDistance, desc: 'Recovery run — short and gentle', pace: 'RPE 2-3, very easy' },
+    { day: 2, type: 'strength' as WorkoutType, distance: null, desc: strength.desc, pace: strength.pace },
     { day: 3, type: 'easy' as WorkoutType, distance: template.easyDistance, desc: 'Easy run — active recovery', pace: 'RPE 3-4, easy effort' },
     {
       day: 4,
@@ -135,7 +155,7 @@ export function generatePlan(startDate: string): TrainingPlan {
     for (let i = 0; i < config.weeks; i++) {
       const template = config.templates[i];
       const isRaceWeek = config.phase === 'taper' && i === config.weeks - 1;
-      const workouts = buildWeekWorkouts(weekStart, template, isRaceWeek);
+      const workouts = buildWeekWorkouts(weekStart, template, isRaceWeek, config.phase);
       const totalDistanceKm = workouts.reduce((sum, w) => sum + (w.distanceKm || 0), 0);
 
       weeks.push({

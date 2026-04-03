@@ -17,6 +17,7 @@ const typeColors: Record<string, string> = {
   tempo: 'text-orange-700 bg-orange-100 dark:bg-orange-900/40 dark:text-orange-400',
   intervals: 'text-red-700 bg-red-100 dark:bg-red-900/40 dark:text-red-400',
   recovery: 'text-lime-700 bg-lime-100 dark:bg-lime-900/40 dark:text-lime-400',
+  strength: 'text-purple-700 bg-purple-100 dark:bg-purple-900/40 dark:text-purple-400',
   race: 'text-yellow-700 bg-yellow-100 dark:bg-yellow-900/40 dark:text-yellow-400',
 };
 
@@ -83,7 +84,7 @@ export function WorkoutDetail({ workout, log, onSave, onDelete, onClose }: Worko
           {workout.type !== 'rest' && (
             <>
               <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-                {log ? 'Update Log' : 'Log This Run'}
+                {log ? 'Update Log' : workout.type === 'strength' ? 'Log This Session' : 'Log This Run'}
               </h3>
               <RunLogForm
                 date={workout.date}

@@ -14,6 +14,7 @@ const typeColors: Record<string, string> = {
   tempo: 'bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400',
   intervals: 'bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400',
   recovery: 'bg-lime-50 dark:bg-lime-900/30 text-lime-700 dark:text-lime-400',
+  strength: 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400',
   race: 'bg-yellow-50 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400',
 };
 
@@ -24,6 +25,7 @@ const typeLabels: Record<string, string> = {
   tempo: 'Tempo',
   intervals: 'Intervals',
   recovery: 'Recovery',
+  strength: 'Strength',
   race: 'Race!',
 };
 
