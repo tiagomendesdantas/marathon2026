@@ -1,4 +1,4 @@
-import { addDays, format } from 'date-fns';
+import { addDays, format, parseISO } from 'date-fns';
 import type { TrainingPlan, TrainingWeek, Workout, Phase, WorkoutType } from '../types';
 
 interface WeekTemplate {
@@ -206,7 +206,7 @@ function buildWeekWorkouts(weekStart: Date, template: WeekTemplate, isRaceWeek: 
 
 export function generatePlan(startDate: string): TrainingPlan {
   const weeks: TrainingWeek[] = [];
-  let weekStart = new Date(startDate);
+  let weekStart = parseISO(startDate + 'T00:00:00');
   let weekNum = 1;
 
   for (const config of PHASE_CONFIGS) {
