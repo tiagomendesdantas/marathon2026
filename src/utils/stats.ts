@@ -1,4 +1,5 @@
 import type { TrainingPlan, RunLog } from '../types';
+import { isDatePast } from './dates';
 
 export interface WeeklyStats {
   weekNumber: number;
@@ -46,7 +47,7 @@ export function computeOverallStats(plan: TrainingPlan, logs: Record<string, Run
     .flatMap((w) => w.workouts)
     .filter((w) => w.type !== 'rest')
     .map((w) => w.date)
-    .filter((d) => new Date(d) < new Date())
+    .filter((d) => isDatePast(d))
     .sort();
 
   const pastRunnable = allRunnableDates.length;
